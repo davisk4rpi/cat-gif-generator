@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
-import { NEW_GIF } from '../actions';
+import { NEW_GIF, FIND_GIF } from '../actions';
 
 const newGif = function(state = {}, action) {
   switch(action.type){
   case NEW_GIF:
-    // returns a new state object that omit's the key associated with the deleted post's ID
-    return action.payload.data.data;
+    let data = action.payload.data.data;
+    data.chosenUrl= data.fixed_height_downsampled_url;
+    return data;
+  case FIND_GIF:
+    data = action.payload.data.data;
+    data.chosenUrl= data.images.fixed_height_downsampled.url;
+    return data;
   default:
     return state;
   }

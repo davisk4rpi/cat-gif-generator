@@ -21,6 +21,7 @@
   "homepage": "https://github.com/davisk4rpi/cat-gif-generator#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-preset-stage-1": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

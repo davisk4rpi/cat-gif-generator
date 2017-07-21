@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { newGif } from '../actions/index';
+import { newGif, findGif } from '../actions/index';
 
 class App extends Component {
   componentDidMount() {
-    this.props.newGif();
+    const { id } = this.props.match.params
+    if (!id){
+      this.props.newGif();
+    } else {
+      this.props.findGif(id);
+    }
   }
 
   render() {
+    if (!this.props.gif){
+      return (
+        <div>Loading...</div>
+      );
+    }
     const { gif } = this.props;
     console.log(gif);
     return(
       <div>
-        <img src={gif.fixed_height_downsampled_url} />
+        <img src={gif.chosenUrl} />
       </div>
     )
   }
@@ -23,4 +33,4 @@ function mapStateToProps(state) {
   return { gif: state.gif };
 }
 
-export default connect(mapStateToProps, { newGif })(App);
+export default connect(mapStateToProps, { newGif, findGif })(App);
