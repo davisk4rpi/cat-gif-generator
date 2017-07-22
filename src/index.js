@@ -2,22 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import promise from 'redux-promise';
+import reduxThunk from 'redux-thunk';
 
 import reducers from './reducers/index';
-import App from './containers/app';
+import Home from './containers/home';
+import Gif from './containers/gif';
 import './styles/main.scss';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+// // old style
+// const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+// const store = createStoreWithMiddleware(reducers);
+// new style
+const store = createStore(
+  reducers,
+  applyMiddleware(reduxThunk, promise)
+)
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <BrowserRouter>
-      <div>
+  <Provider store={store}>
+    <BrowserRouter history={history}>
+      <div className="container">
+        <h1>Cat Gifs!</h1>
         <Switch>
-          <Route path="/:id" component={App} />
-          <Route path="/" component={App} />
+          <Route path="/:id" component={Gif} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </BrowserRouter>

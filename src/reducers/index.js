@@ -1,23 +1,32 @@
 import { combineReducers } from 'redux';
-import { NEW_GIF, FIND_GIF } from '../actions';
+import { NEW_GIF, FIND_GIF_URL } from '../actions';
 
-const newGif = function(state = {}, action) {
+const gifs = function(state = {}, action) {
   switch(action.type){
   case NEW_GIF:
-    let data = action.payload.data.data;
-    data.chosenUrl= data.fixed_height_downsampled_url;
-    return data;
-  case FIND_GIF:
-    data = action.payload.data.data;
-    data.chosenUrl= data.images.fixed_height_downsampled.url;
-    return data;
+    const data = action.payload.data;
+    const addedGif = { [data.id]: data.fixed_height_downsampled_url };
+    let newCurrentGif = {
+      url: data.fixed_height_downsampled_url,
+      id: data.id
+    };
+    const newState = { ...state, ...addedGif, currentGif: newCurrentGif }
+    return { ...newState };
+  case FIND_GIF_URL:
+    const id = action.payload;
+    const url = state[id];
+    newCurrentGif = {
+      url,
+      id
+    };
+    return { ...state, currentGif: newCurrentGif } ;
   default:
-    return state;
+    return state ;
   }
 };
 
 const rootReducer = combineReducers({
-  gif: newGif,
+  gifs,
 });
 
 
