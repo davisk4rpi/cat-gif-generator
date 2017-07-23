@@ -24,7 +24,7 @@ class SearchBox extends Component {
   onInputChange(term) {
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
-    });
+    }, term);
   }
 }
 

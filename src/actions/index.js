@@ -6,8 +6,9 @@ export const FIND_GIF_URL = 'find_gif_url';
 const ROOT_URL = 'https://api.giphy.com/v1/gifs/';
 const API_KEY = '34e971dfebe74aa6b5ff792cef8614dc'
 
-export function newGif(callback) {
-  const request = axios.get(`${ROOT_URL}random?tag=funny+cat&api_key=${API_KEY}`);
+export function newGif(callback, term='funny cat') {
+  const tag = term.replace(/ /g, '+');
+  const request = axios.get(`${ROOT_URL}random?tag=${tag}&api_key=${API_KEY}`);
 
   return (dispatch) => {
     request.then(({data}) => {
