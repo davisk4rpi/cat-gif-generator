@@ -7,6 +7,7 @@ import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk';
 
 import reducers from './reducers/index';
+import Navbar from './components/navbar';
 import Home from './containers/home';
 import Gif from './containers/gif';
 import './styles/main.scss';
@@ -24,7 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={history}>
       <div className="container">
-        <h1>Cat Gifs!</h1>
+        <Navbar />
         <Switch>
           <Route path="/:id" component={Gif} />
           <Route path="/" component={Home} />

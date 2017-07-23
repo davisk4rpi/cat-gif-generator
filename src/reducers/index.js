@@ -7,7 +7,7 @@ const gifs = function(state = {}, action) {
     const data = action.payload.data;
     const addedGif = { [data.id]: data.fixed_height_downsampled_url };
     let newCurrentGif = {
-      url: data.fixed_height_downsampled_url,
+      url: data.image_url,
       id: data.id
     };
     const newState = { ...state, ...addedGif, currentGif: newCurrentGif }
