@@ -4,10 +4,12 @@
   "description": "an app that generates a random cat gif using the GIPHY API",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev-start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "clean": "node scripts/clean.js",
     "asset": "node scripts/asset.js",
-    "build": "npm run clean; npm run asset; node scripts/build.js"
+    "build": "npm run clean; npm run asset; node scripts/build.js",
+    "start": "node server.js",
+    "postinstall": "webpack -p"
   },
   "repository": {
     "type": "git",
