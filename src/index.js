@@ -25,7 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={history}>
       <div className="container">
-        <Navbar />
+        <Route path="/" component={Navbar} history={history} />
         <div className="row">
           <div className="col-xs-12 col-sm-8 col-sm-offset-2">
             <Switch>

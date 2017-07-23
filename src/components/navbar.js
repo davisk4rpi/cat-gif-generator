@@ -1,19 +1,14 @@
 import React from 'react';
+import SearchBox from '../containers/search_box';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
           <strong className="navbar-brand">Cat Gifs!</strong>
         </div>
-        <div>
-          <form className="navbar-form navbar-right">
-            <div className="form-group">
-              <input type="text" className="form-control" />
-            </div>
-          </form>
-        </div>
+        <SearchBox history={props.history} />
       </div>
     </nav>
   );

@@ -16,6 +16,7 @@ class GifComp extends Component {
   }
 
   handleClick() {
+    console.log(this.props.history);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
     });
