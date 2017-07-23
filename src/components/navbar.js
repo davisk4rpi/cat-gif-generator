@@ -5,9 +5,9 @@ const Navbar = () => {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <h2>Cat Gifs!</h2>
+          <strong className="navbar-brand">Cat Gifs!</strong>
         </div>
-        <div className="">
+        <div>
           <form className="navbar-form navbar-right">
             <div className="form-group">
               <input type="text" className="form-control" />

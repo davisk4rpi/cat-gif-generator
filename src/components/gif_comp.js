@@ -30,8 +30,14 @@ class GifComp extends Component {
     }
     return(
       <div>
-        <img src={gifs.currentGif.url} />
-        <button onClick={this.handleClick.bind(this)} className="btn btn-primary">New Gif</button>
+        <div className="row">
+          <div className="col-xs-12">
+            <img src={gifs.currentGif.url} className="center-block" id="gif" alt="This is a Gif"/>
+          </div>
+        </div>
+        <div className="row">
+          <button onClick={this.handleClick.bind(this)} className="btn btn-info btn-lg center-block" id="next-gif-btn">This cat is boring, I must have another</button>
+        </div>
       </div>
     )
   }

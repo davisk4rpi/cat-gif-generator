@@ -1,7 +1,39 @@
+$light: #F2E5C6;
+$primary-dark: #002642;
+$primary-med: #00405C;
+$primary-light: #005C73;
+$accent: #F3B7A3;
+
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $bootstrap-sass-asset-helper: true;
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
-img {
-  border: 5px solid black;
+body {
+  background-color: $light;
+}
+
+.navbar-default {
+  background-color: $primary-med;
+  border: none;
+
+  .navbar-form {
+    border: none;
+  }
+
+  strong.navbar-brand {
+    color: #fff;
+    font-size: 2.5rem;
+  }
+}
+
+#gif {
+  max-width: 100%;
+  border: 2px solid $accent;
+}
+
+#next-gif-btn {
+  margin-top: 10px;
+  background-color: $primary-light;
+  border-color: $light;
+  color: $light;
 }

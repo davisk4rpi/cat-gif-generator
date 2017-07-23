@@ -26,10 +26,14 @@ ReactDOM.render(
     <BrowserRouter history={history}>
       <div className="container">
         <Navbar />
-        <Switch>
-          <Route path="/:id" component={Gif} />
-          <Route path="/" component={Home} />
-        </Switch>
+        <div className="row">
+          <div className="col-xs-12 col-sm-8 col-sm-offset-2">
+            <Switch>
+              <Route path="/:id" component={Gif} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </div>
+        </div>
       </div>
     </BrowserRouter>
   </Provider>
