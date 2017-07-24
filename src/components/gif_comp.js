@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { newGif, findGifUrl } from '../actions/index';
+import { newGif, findGifUrl, isLoading } from '../actions/index';
 
 class GifComp extends Component {
   componentWillMount() {
@@ -16,6 +16,7 @@ class GifComp extends Component {
   }
 
   handleClick() {
+    this.props.isLoading();
     console.log(this.props);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
@@ -23,10 +24,11 @@ class GifComp extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { gifs } = this.props;
-    if (!gifs.currentGif){
+    if ( !gifs.currentGif || gifs.isLoading){
       return (
-        <div>Loading...</div>
+        <div className="loading">Loading...</div>
       );
     }
     return(
@@ -51,4 +53,4 @@ function mapStateToProps( { gifs, tag }) {
    };
 }
 
-export default connect(mapStateToProps, { newGif, findGifUrl })(GifComp);
+export default connect(mapStateToProps, { newGif, findGifUrl, isLoading })(GifComp);

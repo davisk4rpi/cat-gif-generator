@@ -1,11 +1,19 @@
 import axios from 'axios';
 
+export const IS_LOADING = 'is_loading';
 export const NEW_GIF = 'new_gif';
-export const FIND_GIF_URL = 'find_gif_url';
 export const UPDATE_TAG = 'update_tag';
+export const FIND_GIF_URL = 'find_gif_url';
 
 const ROOT_URL = 'https://api.giphy.com/v1/gifs/';
 const API_KEY = '34e971dfebe74aa6b5ff792cef8614dc'
+
+export function isLoading() {
+  return {
+    type: IS_LOADING,
+    payload: true
+  };
+}
 
 export function newGif(callback, term='funny cat') {
   const tag = term.replace(/ /g, '+');

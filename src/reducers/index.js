@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux';
-import { NEW_GIF, FIND_GIF_URL, UPDATE_TAG } from '../actions';
+import { IS_LOADING, NEW_GIF, FIND_GIF_URL, UPDATE_TAG } from '../actions';
 
 const gifs = function(state = {}, action) {
   switch(action.type){
+  case IS_LOADING:
+    const loadingBoolean = action.payload;
+    const newerState = { ...state, isLoading: loadingBoolean };
+    console.log(newerState);
+    return newerState;
   case NEW_GIF:
     const data = action.payload.data;
     const addedGif = { [data.id]: data.fixed_height_downsampled_url };
@@ -10,7 +15,13 @@ const gifs = function(state = {}, action) {
       url: data.image_url,
       id: data.id
     };
-    const newState = { ...state, ...addedGif, currentGif: newCurrentGif }
+    const newState = {
+      ...state,
+      ...addedGif,
+      currentGif: newCurrentGif,
+      isLoading: false
+    };
+    console.log(newState);
     return { ...newState };
   case FIND_GIF_URL:
     const id = action.payload;
@@ -27,7 +38,11 @@ const gifs = function(state = {}, action) {
         id
       };
     }
-    return { ...state, currentGif: newCurrentGif } ;
+    return {
+      ...state,
+      currentGif: newCurrentGif,
+      isLoading: false
+    } ;
   default:
     return state ;
   }
