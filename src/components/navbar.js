@@ -6,7 +6,7 @@ const Navbar = (props) => {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <strong className="navbar-brand">Cat Gifs!</strong>
+          <strong className="navbar-brand">Find Gifs!</strong>
         </div>
         <SearchBox history={props.history} />
       </div>

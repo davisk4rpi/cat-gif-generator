@@ -8,9 +8,11 @@ class SearchBox extends Component {
     return (
       <div>
         <form className="navbar-form navbar-right">
+          <span className="navbar-text">Start typing to see different gifs</span>
           <div className="form-group">
             <input
               type="text"
+              placeholder="funny cat"
               className="form-control"
               value={this.props.searchTerm}
               onChange={(event) => this.onInputChange(event.target.value)}

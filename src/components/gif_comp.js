@@ -37,7 +37,7 @@ class GifComp extends Component {
           </div>
         </div>
         <div className="row">
-          <button onClick={this.handleClick.bind(this)} className="btn btn-info btn-lg center-block" id="next-gif-btn">This cat is boring, I must have another</button>
+          <button onClick={this.handleClick.bind(this)} className="btn btn-info btn-lg center-block" id="next-gif-btn">This gif is boring, I must have another</button>
         </div>
       </div>
     )
