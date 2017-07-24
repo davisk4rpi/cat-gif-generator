@@ -4,6 +4,15 @@ import { newGif, updateTag, isLoading } from '../actions/index';
 
 class SearchBox extends Component {
 
+
+  onInputChange(term) {
+    this.props.isLoading();
+    this.props.updateTag(term);
+    this.props.newGif( (id) => {
+      this.props.history.push(`/${id}`);
+    }, term);
+  }
+
   render() {
     return (
       <div>
@@ -15,20 +24,12 @@ class SearchBox extends Component {
               placeholder="funny cat"
               className="form-control"
               value={this.props.searchTerm}
-              onChange={(event) => this.onInputChange(event.target.value)}
+              onChange={ (event) => { this.onInputChange(event.target.value) } }
               />
           </div>
         </form>
       </div>
     );
-  }
-
-  onInputChange(term) {
-    this.props.isLoading();
-    this.props.updateTag(term);
-    this.props.newGif( (id) => {
-      this.props.history.push(`/${id}`);
-    }, term);
   }
 }
 
