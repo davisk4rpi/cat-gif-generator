@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { NEW_GIF, FIND_GIF_URL } from '../actions';
+import { NEW_GIF, FIND_GIF_URL, UPDATE_TAG } from '../actions';
 
 const gifs = function(state = {}, action) {
   switch(action.type){
@@ -25,8 +25,19 @@ const gifs = function(state = {}, action) {
   }
 };
 
+const tag = function(state = {}, action) {
+  switch(action.type){
+    case UPDATE_TAG:
+      const tag = action.payload;
+      return tag;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   gifs,
+  tag
 });
 
 

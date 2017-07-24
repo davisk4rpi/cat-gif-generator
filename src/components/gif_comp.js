@@ -16,10 +16,10 @@ class GifComp extends Component {
   }
 
   handleClick() {
-    console.log(this.props.history);
+    console.log(this.props);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
-    });
+    }, this.props.tag);
   }
 
   render() {
@@ -44,8 +44,11 @@ class GifComp extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { gifs: state.gifs };
+function mapStateToProps( { gifs, tag }) {
+  return {
+    gifs,
+    tag
+   };
 }
 
 export default connect(mapStateToProps, { newGif, findGifUrl })(GifComp);

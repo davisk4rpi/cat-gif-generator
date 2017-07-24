@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newGif } from '../actions/index';
+import { newGif, updateTag } from '../actions/index';
 
 class SearchBox extends Component {
 
@@ -22,14 +22,15 @@ class SearchBox extends Component {
   }
 
   onInputChange(term) {
+    this.props.updateTag(term);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
     }, term);
   }
 }
 
-function mapStateToProps ({ searchTerm }) {
-  return { searchTerm };
+function mapStateToProps ({ tag }) {
+  return { tag };
 };
 
-export default connect(mapStateToProps, { newGif })(SearchBox);
+export default connect(mapStateToProps, { newGif, updateTag })(SearchBox);
