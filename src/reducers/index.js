@@ -15,10 +15,18 @@ const gifs = function(state = {}, action) {
   case FIND_GIF_URL:
     const id = action.payload;
     const url = state[id];
-    newCurrentGif = {
-      url,
-      id
-    };
+    if (!url) {
+      newCurrentGif = {
+        url: "http://media3.giphy.com/media/DdrpWxFSsADrW/giphy.gif",
+        id: "rickrolled"
+      }
+    }
+    else {
+      newCurrentGif = {
+        url,
+        id
+      };
+    }
     return { ...state, currentGif: newCurrentGif } ;
   default:
     return state ;
