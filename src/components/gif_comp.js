@@ -5,27 +5,30 @@ import { newGif, findGifUrl, isLoading } from '../actions/index';
 
 class GifComp extends Component {
   componentWillMount() {
-    const { id } = this.props;
+    let { id } = this.props;
     this.props.findGifUrl(id);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.id != nextProps.id) {
-      nextProps.findGifUrl(nextProps.id);
+    let { id } = nextProps;
+    if (this.props.id != id) {
+      nextProps.findGifUrl(id);
     }
   }
 
   handleClick() {
+    // the first action 'isLoading' switches a boolean to true until the second
+    // action is complete. This toggles the loading screen while the new API
+    // request is resolving
     this.props.isLoading();
-    console.log(this.props);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
-    }, this.props.tag);
+    }, this.props.tag, this.props.gifs);
   }
 
   render() {
-    console.log(this.props);
     const { gifs } = this.props;
+    // Renders a loading screen until a gif has loaded
     if ( !gifs.currentGif || gifs.isLoading){
       return (
         <div className="loading">Loading...</div>

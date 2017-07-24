@@ -6,7 +6,6 @@ const gifs = function(state = {}, action) {
   case IS_LOADING:
     const loadingBoolean = action.payload;
     const newerState = { ...state, isLoading: loadingBoolean };
-    console.log(newerState);
     return newerState;
   case NEW_GIF:
     const data = action.payload.data;
@@ -21,7 +20,6 @@ const gifs = function(state = {}, action) {
       currentGif: newCurrentGif,
       isLoading: false
     };
-    console.log(newState);
     return { ...newState };
   case FIND_GIF_URL:
     const id = action.payload;

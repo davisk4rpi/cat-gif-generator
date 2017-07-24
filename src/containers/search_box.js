@@ -10,7 +10,7 @@ class SearchBox extends Component {
     this.props.updateTag(term);
     this.props.newGif( (id) => {
       this.props.history.push(`/${id}`);
-    }, term);
+    }, term, this.props.gifs);
   }
 
   render() {
@@ -33,8 +33,11 @@ class SearchBox extends Component {
   }
 }
 
-function mapStateToProps ({ tag }) {
-  return { tag };
+function mapStateToProps ({ tag, gifs }) {
+  return {
+    tag,
+    gifs
+  };
 };
 
 export default connect(mapStateToProps, { newGif, updateTag, isLoading })(SearchBox);

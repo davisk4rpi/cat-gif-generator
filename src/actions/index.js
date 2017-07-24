@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 export const IS_LOADING = 'is_loading';
 export const NEW_GIF = 'new_gif';
@@ -15,8 +16,9 @@ export function isLoading() {
   };
 }
 
-export function newGif(callback, term='funny cat') {
+export function newGif(callback, term='funny cat', gifs) {
   const tag = term.replace(/ /g, '+');
+  const gifIds = _.keys(gifs);
   const request = axios.get(`${ROOT_URL}random?tag=${tag}&api_key=${API_KEY}`);
 
   return (dispatch) => {
