@@ -25,7 +25,7 @@ const gifs = function(state = {}, action) {
   }
 };
 
-const tag = function(state = {}, action) {
+const tag = function(state = 'funny cat', action) {
   switch(action.type){
     case UPDATE_TAG:
       const tag = action.payload;
